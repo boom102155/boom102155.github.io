@@ -4,7 +4,6 @@
 }
 
 body {
-  overflow-x: hidden;
   /* justify-content: center; */
   /* align-items: center; */
   /* min-height: 100vh; */
@@ -158,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
           animation-delay: 11003ms;
 }
 .bgcover .ballon:nth-child(5) {
-  left: 93%;
+  left: 83%;
   background-color: pink;
   color: pink;
   -webkit-animation: blow 28433ms ease-out infinite;
