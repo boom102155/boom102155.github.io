@@ -48,7 +48,6 @@ body, html {
 
 
 .caption span.border {
-  text-decoration: underline;
   background-color: rgb(5, 44, 14);
   color: #fff;
   padding: 18px;
@@ -58,7 +57,6 @@ body, html {
 
 
 h2 {
-  text-decoration: underline;
   letter-spacing: 5px;
   text-transform: uppercase;
   font: 30px "Lato", sans-serif;
