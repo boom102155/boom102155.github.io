@@ -10,20 +10,11 @@
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/hbd.css">
 
-    <script>
-      function init() {
-            var myAudio = document.getElementById("audio");
-            myAudio.addEventListener('ended', loopAudio, false);
-        }
-        function loopAudio() {
-            var myAudio = document.getElementById("audio");
-            myAudio.play();
-        }
-    </script>
-
 </head>
-<body onload="init();">
-  <audio id="audio" controls src="sound/hbd.mp3"></audio>
+<body>
+    <audio controls autoplay>
+        <source src="sound/hbd.mp3" type="audio/mpeg">
+    </audio>
   
   <div class="wrapper" style="padding-bottom: 40px; padding-top: 250px; background-color: rgba(3, 173, 108, 0.7);">
     <div class="text" style="padding-top: 15rem;">
@@ -114,9 +105,7 @@
     });
   </script>
 
-  <audio autoplay loop>
-      <source src="sound/hbd.mp3" type="audio/mpeg"> 
-  </audio>
+  
 
 </body>
 </html>
