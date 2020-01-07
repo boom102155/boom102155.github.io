@@ -171,15 +171,21 @@
                 var point = getRandomInt(8,10)
                 alert("ท่านทายถูก " + point + "/10");
                 document.getElementById("btnNext").innerHTML = "ถัดไป"
-            }
-            if(mr > maxRound){
-                $(".title").hide();
+            }else if(mi == maxImg && mr == maxRound){
                 document.getElementById("countingRound").innerHTML = "รอบที่ " + mr + "/3";
                 document.getElementById("countingImg").innerHTML = "รูปที่ " + mi + "/10";              
                 alert("จบเกม");
                 
                 location.replace("index.html");
             }
+
+            // if(mr > maxRound){
+            //     document.getElementById("countingRound").innerHTML = "รอบที่ " + mr + "/3";
+            //     document.getElementById("countingImg").innerHTML = "รูปที่ " + mi + "/10";              
+            //     alert("จบเกม");
+                
+            //     location.replace("index.html");
+            // }
         }
     
     </script>
