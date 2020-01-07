@@ -162,7 +162,7 @@
                 }else{
                     document.getElementById("btnNext").innerHTML = "ถัดไป";
                 }
-            }else if(mi == maxImg && mr <= maxRound){
+            }else if(mi == maxImg && mr < maxRound){
                 mr++;
                 mi = 1;
                 document.getElementById("countingRound").innerHTML = "รอบที่ " + mr + "/3";
