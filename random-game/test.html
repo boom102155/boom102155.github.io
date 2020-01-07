@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var images = new Array();
+
+        images.push("image/allimg/img1.jpg");
+        images.push("image/allimg/img2.jpg");
+        images.push("image/allimg/img3.jpg");
+        images.push("image/allimg/img4.jpg");
+        images.push("image/allimg/img5.jpg");
+        images.push("image/allimg/img6.jpg");
+        images.push("image/allimg/img7.jpg");
+        images.push("image/allimg/img8.jpg");
+        images.push("image/allimg/img9.jpg");
+        images.push("image/allimg/img10.jpg");
+        images.push("image/allimg/img11.jpg");
+        images.push("image/allimg/img12.jpg");
+        images.push("image/allimg/img13.jpg");
+        images.push("image/allimg/img14.jpg");
+        images.push("image/allimg/img15.jpg");
+
+        var currentIndex = images.length, temporaryValue, randomIndex;
+
+        while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = images[currentIndex];
+        images[currentIndex] = images[randomIndex];
+        images[randomIndex] = temporaryValue;
+
+        }
+        console.log(images);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
