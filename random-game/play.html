@@ -173,7 +173,7 @@
                 document.getElementById("btnNext").innerHTML = "ถัดไป"
             }
             if(mr > maxRound){
-                mr - 1;
+                $(".title").hide();
                 document.getElementById("countingRound").innerHTML = "รอบที่ " + mr + "/3";
                 document.getElementById("countingImg").innerHTML = "รูปที่ " + mi + "/10";              
                 alert("จบเกม");
