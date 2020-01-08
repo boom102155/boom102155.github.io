@@ -154,6 +154,7 @@
             pickimg2();
             var maxRound = 3;
             var maxImg = 10;
+            var point = getRandomInt(8,10);
             if(mi < maxImg){              
                 mi++;               
                 document.getElementById("countingImg").innerHTML = "รูปที่ " + mi + "/10";        
@@ -166,9 +167,7 @@
                 mr++;
                 mi = 1;
                 document.getElementById("countingRound").innerHTML = "รอบที่ " + mr + "/3";
-                
                 document.getElementById("countingImg").innerHTML = "รูปที่ " + mi + "/10";
-                var point = getRandomInt(8,10)
                 alert("ท่านทายถูก " + point + "/10");
                 document.getElementById("btnNext").innerHTML = "ถัดไป"
             }else if(mi == maxImg && mr == maxRound){
@@ -179,14 +178,6 @@
                 
                 location.replace("index.html");
             }
-
-            // if(mr > maxRound){
-            //     document.getElementById("countingRound").innerHTML = "รอบที่ " + mr + "/3";
-            //     document.getElementById("countingImg").innerHTML = "รูปที่ " + mi + "/10";              
-            //     alert("จบเกม");
-                
-            //     location.replace("index.html");
-            // }
         }
     
     </script>
