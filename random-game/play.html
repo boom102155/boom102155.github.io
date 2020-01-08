@@ -158,7 +158,7 @@
                 mi++;               
                 document.getElementById("countingImg").innerHTML = "รูปที่ " + mi + "/10";        
                 if(mi == 10){
-                    document.getElementById("btnNext").innerHTML = "รอบถัดไป";
+                    document.getElementById("btnNext").innerHTML = "เล่นเกมส์ใหม่อีกครั้ง";
                 }else{
                     document.getElementById("btnNext").innerHTML = "ถัดไป";
                 }
@@ -172,6 +172,7 @@
                 alert("ท่านทายถูก " + point + "/10");
                 document.getElementById("btnNext").innerHTML = "ถัดไป"
             }else if(mi == maxImg && mr == maxRound){
+                alert("ท่านทายถูก " + point + "/10");
                 document.getElementById("countingRound").innerHTML = "รอบที่ " + mr + "/3";
                 document.getElementById("countingImg").innerHTML = "รูปที่ " + mi + "/10";              
                 alert("จบเกม");
