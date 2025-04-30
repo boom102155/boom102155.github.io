@@ -36,11 +36,13 @@
     </div>
     <script src="js/jquery.min.js"></script>
     <script>
-      if (!$(".envelope").hasClass("open")) {
-        $(".envelope").click(function () {
-          $(this).removeClass("new").addClass("open");
-        });
-      }
+      $(function () {
+        if (!$(".envelope").hasClass("open")) {
+          $(".envelope").click(function () {
+            $(this).removeClass("new").addClass("open");
+          });
+        }
+      });
     </script>
   </body>
 </html>
