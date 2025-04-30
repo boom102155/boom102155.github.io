@@ -35,13 +35,11 @@
       </div>
     </div>
     <script>
-      $(function () {
-        if (!$(".envelope").hasClass("open")) {
-          $(".envelope").click(function () {
-            $(this).removeClass("new").addClass("open");
-          });
-        }
-      });
+      if (!$(".envelope").hasClass("open")) {
+        $(".envelope").click(function () {
+          $(this).removeClass("new").addClass("open");
+        });
+      }
     </script>
   </body>
 </html>
