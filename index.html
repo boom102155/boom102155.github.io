@@ -33,16 +33,15 @@
         <div class="flip bottom-flip"></div>
         <div class="flip top-flip"></div>
       </div>
-
-      <script>
-        $(function () {
-          if (!$(".envelope").hasClass("open")) {
-            $(".envelope").click(function () {
-              $(this).removeClass("new").addClass("open");
-            });
-          }
-        });
-      </script>
     </div>
+    <script>
+      $(function () {
+        if (!$(".envelope").hasClass("open")) {
+          $(".envelope").click(function () {
+            $(this).removeClass("new").addClass("open");
+          });
+        }
+      });
+    </script>
   </body>
 </html>
