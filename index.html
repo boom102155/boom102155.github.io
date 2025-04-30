@@ -1,37 +1,48 @@
-<div class="envelope new">
-  <div class="front">
-    <div class="mail">
-      <p>Happy Birthday</p>
-      <p>Click me</p>
-    </div>
-  </div>
-  <div class="back">
-    <div class="letter">
-      <p>I hope your day is as amazing and fun as</p>
-      <p>I am...</p>
-      <p>HBD Older Sis</p>
-
-      <div class="box">
-        <div class="cake">
-          <div class="candle">
-            <div class="fire"></div>
-          </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Brithday MY LOVE</title>
+    <link rel="stylesheet" href="css/hbd.css" />
+  </head>
+  <body>
+    <div class="envelope new">
+      <div class="front">
+        <div class="mail">
+          <p>Happy Birthday</p>
+          <p>Click me</p>
         </div>
       </div>
-    </div>
-    <div class="flip left-flip"></div>
-    <div class="flip right-flip"></div>
-    <div class="flip bottom-flip"></div>
-    <div class="flip top-flip"></div>
-  </div>
+      <div class="back">
+        <div class="letter">
+          <p>I hope your day is as amazing and fun as</p>
+          <p>I am...</p>
+          <p>HBD Older Sis</p>
 
-  <script>
-    $(function () {
-      if (!$(".envelope").hasClass("open")) {
-        $(".envelope").click(function () {
-          $(this).removeClass("new").addClass("open");
+          <div class="box">
+            <div class="cake">
+              <div class="candle">
+                <div class="fire"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flip left-flip"></div>
+        <div class="flip right-flip"></div>
+        <div class="flip bottom-flip"></div>
+        <div class="flip top-flip"></div>
+      </div>
+
+      <script>
+        $(function () {
+          if (!$(".envelope").hasClass("open")) {
+            $(".envelope").click(function () {
+              $(this).removeClass("new").addClass("open");
+            });
+          }
         });
-      }
-    });
-  </script>
-</div>
+      </script>
+    </div>
+  </body>
+</html>
