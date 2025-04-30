@@ -1,11 +1,464 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Happy Birth Day MY LOVE</title>
-</head>
-<body>
-	
-</body>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>กำหนดการงานแต่งงาน</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ... (เหมือนเดิมทั้งหมด) ... */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        scroll-behavior: smooth;
+        font-family: "Kanit", sans-serif;
+      }
+      section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 50px 20px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 1s ease;
+        position: relative;
+      }
+      section.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .hero {
+        background: url("https://images.unsplash.com/photo-1528569937393-e5a4f64b0f6b")
+          no-repeat center center/cover;
+        background-attachment: fixed;
+        flex-direction: column;
+      }
+      .schedule {
+        background: #f8f8f8;
+        color: #333;
+        flex-direction: column;
+      }
+      .gallery {
+        background: #fff;
+        flex-direction: column;
+        color: #333;
+      }
+      .parallax {
+        background: url("https://images.unsplash.com/photo-1543791185-c03e5c798cf6")
+          no-repeat center center/cover;
+        background-attachment: fixed;
+      }
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 1.2rem;
+        margin: 10px 0;
+      }
+      .timeline {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .event {
+        margin-bottom: 30px;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .gallery-grid img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        transition: transform 0.5s, box-shadow 0.5s;
+      }
+      .gallery-grid img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+      #countdown {
+        margin-top: 20px;
+        font-size: 2rem;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 15px 30px;
+        border-radius: 15px;
+      }
+      /* ปุ่มเพลง */
+      #music-control {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.7);
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      #music-control:hover {
+        background: rgba(255, 255, 255, 1);
+      }
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+        #countdown {
+          font-size: 1.5rem;
+        }
+        .gallery-grid img {
+          height: 200px;
+        }
+      }
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2rem;
+        }
+        h2 {
+          font-size: 1.5rem;
+        }
+        p {
+          font-size: 0.9rem;
+        }
+        #countdown {
+          font-size: 1.2rem;
+        }
+        .gallery-grid img {
+          height: 150px;
+        }
+      }
+      .music-btn {
+        width: 60px;
+        height: 60px;
+        background: #fff;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s, transform 0.3s;
+      }
+      .music-btn:hover {
+        background: #ffe0e0;
+        transform: scale(1.1);
+      }
+      #progress-bar {
+        margin-left: 15px;
+        height: 5px;
+        border-radius: 10px;
+      }
+
+      @keyframes floatUpCurve {
+        0% {
+          transform: translateX(0) translateY(0) rotate(45deg) scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translateX(20px) translateY(-150px) rotate(60deg)
+            scale(1.2);
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateX(-20px) translateY(-300px) rotate(75deg)
+            scale(1.5);
+          opacity: 0;
+        }
+      }
+
+      .heart {
+        position: fixed;
+        bottom: 20px;
+        width: 20px;
+        height: 20px;
+        background-color: pink;
+        transform: rotate(45deg);
+        animation: floatUpCurve 3s ease-out forwards;
+        z-index: 9999;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: inherit;
+        border-radius: 50%;
+      }
+
+      .heart::before {
+        top: -50%;
+        left: 0;
+      }
+
+      .heart::after {
+        left: 50%;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ปุ่มและโปรเกสเพลง -->
+    <div style="margin-top: 20px">
+      <button id="music-control" class="music-btn">▶️</button>
+      <input
+        type="range"
+        id="progress-bar"
+        value="0"
+        max="100"
+        style="width: 200px; vertical-align: middle"
+      />
+    </div>
+
+    <audio id="bg-music" autoplay loop muted>
+      <source
+        src="https://cdn.pixabay.com/download/audio/2022/11/16/audio_5225780b4f.mp3?filename=romantic-piano-melody-126373.mp3"
+        type="audio/mp3"
+      />
+      Your browser does not support the audio element.
+    </audio>
+
+    <section class="hero">
+      <div>
+        <h1>เราจะแต่งงานกัน!</h1>
+        <p>ณ วันที่ 12 ธันวาคม 2568</p>
+        <div id="countdown">กำลังโหลด...</div>
+        <button id="music-control">เล่นเพลง 🎵</button>
+      </div>
+    </section>
+
+    <section class="schedule">
+      <div class="timeline">
+        <h2>กำหนดการ</h2>
+        <div class="event">
+          <h3>08:00 น. - พิธีหมั้น</h3>
+          <p>สถานที่: บ้านเจ้าสาว</p>
+        </div>
+        <div class="event">
+          <h3>11:00 น. - พิธีหลั่งน้ำพระพุทธมนต์</h3>
+          <p>สถานที่: บ้านเจ้าสาว</p>
+        </div>
+        <div class="event">
+          <h3>18:00 น. - งานเลี้ยงฉลอง</h3>
+          <p>สถานที่: โรงแรมสวยงาม</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>แกลเลอรีความทรงจำ</h2>
+      <div class="gallery-grid">
+        <img
+          src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
+          alt="Couple 1"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde"
+          alt="Couple 2"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1542318421-1f61a90b5965"
+          alt="Couple 3"
+        />
+        <img
+          src="https://images.unsplash.com/photo-1506459225024-1428097a7e18"
+          alt="Couple 4"
+        />
+      </div>
+    </section>
+
+    <section class="parallax">
+      <div>
+        <h2>แล้วพบกันนะคะ/ครับ</h2>
+        <p>ขอบคุณทุกท่านที่ร่วมเป็นสักขีพยานในความรักของเรา</p>
+      </div>
+    </section>
+
+    <script>
+      // Scroll Animation
+      const sections = document.querySelectorAll("section");
+      window.addEventListener("scroll", () => {
+        const triggerBottom = window.innerHeight * 0.8;
+        sections.forEach((sec) => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top < triggerBottom) {
+            sec.classList.add("show");
+          }
+        });
+      });
+
+      // Countdown Timer
+      const countdown = document.getElementById("countdown");
+      const weddingDate = new Date("2025-12-12T00:00:00").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdown.innerHTML = `${days} วัน ${hours} ชั่วโมง ${minutes} นาที ${seconds} วินาที`;
+
+        if (distance < 0) {
+          clearInterval(timer);
+          countdown.innerHTML = "ยินดีต้อนรับสู่วันสำคัญ!";
+        }
+      }
+
+      const timer = setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // Music Control
+      const bgMusic = document.getElementById("bg-music");
+      const musicControl = document.getElementById("music-control");
+
+      document.body.addEventListener(
+        "click",
+        () => {
+          bgMusic.muted = false;
+        },
+        { once: true }
+      );
+
+      musicControl.addEventListener("click", () => {
+        if (bgMusic.paused) {
+          bgMusic.play();
+          musicControl.textContent = "หยุดเพลง ⏸️";
+        } else {
+          bgMusic.pause();
+          musicControl.textContent = "เล่นเพลง 🎵";
+        }
+      });
+
+      // อัปเดตปุ่มกับ progress bar
+      const progressBar = document.getElementById("progress-bar");
+
+      function updateProgressBar() {
+        const percentage = (bgMusic.currentTime / bgMusic.duration) * 100;
+        progressBar.value = percentage || 0;
+      }
+
+      bgMusic.addEventListener("timeupdate", updateProgressBar);
+
+      musicControl.addEventListener("click", () => {
+        if (bgMusic.paused) {
+          bgMusic.play();
+          musicControl.textContent = "⏸️";
+        } else {
+          bgMusic.pause();
+          musicControl.textContent = "▶️";
+        }
+      });
+
+      // อนุญาตให้ลากแถบเลื่อน
+      progressBar.addEventListener("input", (e) => {
+        const seekTime = (e.target.value / 100) * bgMusic.duration;
+        bgMusic.currentTime = seekTime;
+      });
+
+      // ฟังก์ชันปล่อยหัวใจ
+      function releaseHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000); // ลบหัวใจออกหลังจาก animation จบ
+      }
+
+      // ตรวจสอบว่าเพลงใกล้จบหรือยัง
+      bgMusic.addEventListener("timeupdate", () => {
+        const timeLeft = bgMusic.duration - bgMusic.currentTime;
+        if (timeLeft <= 10 && !bgMusic._heartsReleased) {
+          bgMusic._heartsReleased = true;
+          const interval = setInterval(() => {
+            releaseHeart();
+          }, 500); // ปล่อยหัวใจทุก 0.5 วินาที
+
+          setTimeout(() => {
+            clearInterval(interval);
+          }, 10000); // ปล่อยหัวใจเป็นเวลา 10 วิ (จนเพลงจบ)
+        }
+      });
+
+      // รีเซ็ตเมื่อเพลงเล่นใหม่
+      bgMusic.addEventListener("play", () => {
+        bgMusic._heartsReleased = false;
+      });
+
+      function releaseHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+
+        // สุ่มสีพาสเทล
+        const colors = ["#ffc0cb", "#add8e6", "#dda0dd", "#fffacd"]; // ชมพู ฟ้า ม่วง เหลืองอ่อน
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        heart.style.backgroundColor = randomColor;
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000); // ลบหัวใจหลังจาก animation จบ
+      }
+
+      function releaseHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+
+        // สุ่มสีพาสเทล
+        const colors = ["#ffc0cb", "#add8e6", "#dda0dd", "#fffacd"]; // ชมพู ฟ้า ม่วง เหลืองอ่อน
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        heart.style.backgroundColor = randomColor;
+
+        // สุ่มขนาดหัวใจ (ตั้งแต่ 15px ถึง 30px)
+        const size = Math.floor(Math.random() * 15) + 15; // 15px - 30px
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+
+        // ปรับขนาดหัวใจกลมๆ ด้วย
+        heart.style.setProperty("--heart-size", `${size}px`);
+
+        // สุ่มตำแหน่ง X นิดนึง (ไม่ให้อยู่กลางตลอด)
+        const randomLeft = Math.random() * 100; // 0% - 100%
+        heart.style.left = `${randomLeft}%`;
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000); // ลบหัวใจหลังจาก animation จบ
+      }
+    </script>
+  </body>
 </html>
