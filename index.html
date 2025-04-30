@@ -151,6 +151,48 @@
           height: 150px;
         }
       }
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-300px) scale(1.5);
+          opacity: 0;
+        }
+      }
+
+      .heart {
+        position: fixed;
+        bottom: 20px;
+        left: calc(50% - 10px);
+        width: 20px;
+        height: 20px;
+        background-color: pink;
+        transform: rotate(45deg);
+        animation: floatUp 3s ease-out forwards;
+        z-index: 9999;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: pink;
+        border-radius: 50%;
+      }
+
+      .heart::before {
+        top: -10px;
+        left: 0;
+      }
+
+      .heart::after {
+        left: 10px;
+        top: 0;
+      }
     </style>
   </head>
   <body>
@@ -277,6 +319,36 @@
           bgMusic.pause();
           musicControl.textContent = "เล่นเพลง 🎵";
         }
+      });
+      // ฟังก์ชันปล่อยหัวใจ
+      function releaseHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 3000); // ลบหัวใจออกหลังจาก animation จบ
+      }
+
+      // ตรวจสอบว่าเพลงใกล้จบหรือยัง
+      bgMusic.addEventListener("timeupdate", () => {
+        const timeLeft = bgMusic.duration - bgMusic.currentTime;
+        if (timeLeft <= 10 && !bgMusic._heartsReleased) {
+          bgMusic._heartsReleased = true;
+          const interval = setInterval(() => {
+            releaseHeart();
+          }, 500); // ปล่อยหัวใจทุก 0.5 วินาที
+
+          setTimeout(() => {
+            clearInterval(interval);
+          }, 10000); // ปล่อยหัวใจเป็นเวลา 10 วิ (จนเพลงจบ)
+        }
+      });
+
+      // รีเซ็ตเมื่อเพลงเล่นใหม่
+      bgMusic.addEventListener("play", () => {
+        bgMusic._heartsReleased = false;
       });
     </script>
   </body>
