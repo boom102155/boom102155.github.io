@@ -6,7 +6,7 @@ body, html {
 }
 
 body {
-  margin: 0;
+  /* margin: 0; */
   background-color: mistyrose;
   position: relative;
   perspective: 800px;
@@ -21,7 +21,7 @@ body {
   top: 50%;
   left: 50%;
   margin-top: -183.33333px;
-  margin-left: -275px;
+  margin-left: -230px;
   transform-style: preserve-3d;
   transform-origin: right center;
   transition: transform 1s ease;
@@ -78,6 +78,7 @@ body {
   line-height: 13px;
 	letter-spacing: 0.5px;
 	color: #ff969f;
+  margin-top: 20px;
 }
 .envelope .front .mail p:first-child {
   font-size: 50px;
@@ -422,7 +423,7 @@ body {
   border-top-left-radius: 40%;
   border-top-right-radius: 40%;
   position: absolute;
-  bottom: 90%;
+  bottom: 60%;
   left: 48%;
   margin-left: -2.5px;
   margin-top: -8.333333333333334px;
