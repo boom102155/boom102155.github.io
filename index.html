@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Brithday MY LOVE</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="css/hbd.css" />
   </head>
   <body>
+    <div class="container">
     <audio loop autoplay controls>
-      <source src="bgaudio/HBDGuitar.mp3" type="audio/mpeg">
+      <source src="audio/HBDGuitar.mp3" type="audio/mpeg">
     </audio>
     <div class="envelope new">
       <div class="front">
@@ -44,7 +47,9 @@
         <div class="flip top-flip"></div>
       </div>
     </div>
+  </div>
     <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script>
       $(function () {
         if (!$(".envelope").hasClass("open")) {
